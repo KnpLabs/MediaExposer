@@ -1,14 +1,14 @@
 <?php
 
-namespace Mediator\Iterator;
+namespace MediaExposer\Iterator;
 
-use Mediator\PathResolver;
+use MediaExposer\PathResolver;
 
 /**
  * Iterator that filters another iterator to only return the elements
  * implementing the PathResolver interface
  *
- * @package Mediator
+ * @package MediaExposer
  * @license http://www.opensource.org/licenses/mit-license.php MIT
  * @author  Antoine Hérault <antoine.herault@gmail.com>
  */

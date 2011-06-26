@@ -1,8 +1,8 @@
 <?php
 
-namespace Mediator\Resolver;
+namespace MediaExposer\Resolver;
 
-use Mediator\SourceResolver;
+use MediaExposer\SourceResolver;
 
 /**
  * Callback source resolver
@@ -12,7 +12,7 @@ use Mediator\SourceResolver;
  * configured $callbackGetSourceType for the "getSourceType" method. They all
  * will be calleds with two arguments: the model and its options.
  *
- * @package Mediator
+ * @package MediaExposer
  * @license http://www.opensource.org/licenses/mit-license.php MIT
  * @author  Antoine Hérault <antoine.herault@gmail.com>
  */

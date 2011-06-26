@@ -1,11 +1,11 @@
 <?php
 
-namespace Mediator;
+namespace MediaExposer;
 
 /**
  * Interface for the resolvers
  *
- * @package Mediator
+ * @package MediaExposer
  * @license http://www.opensource.org/licenses/mit-license.php MIT
  * @author  Antoine Hérault <antoine.herault@gmail.com>
  */

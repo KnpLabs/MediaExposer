@@ -1,6 +1,6 @@
 <?php
 
-namespace Mediator;
+namespace MediaExposer;
 
 /**
  * Interface for the source resolvers

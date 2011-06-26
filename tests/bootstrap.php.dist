@@ -6,7 +6,7 @@ use Symfony\Component\ClassLoader\UniversalClassLoader;
 
 $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
-    'Mediator' => __DIR__.'/../src',
+    'MediaExposer' => __DIR__.'/../src',
 ));
 
 $loader->register();

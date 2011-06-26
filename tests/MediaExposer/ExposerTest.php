@@ -1,6 +1,6 @@
 <?php
 
-namespace Mediator;
+namespace MediaExposer;
 
 class ExposerTest extends \PHPUnit_Framework_TestCase
 {
@@ -108,11 +108,11 @@ class ExposerTest extends \PHPUnit_Framework_TestCase
 
     private function getSourceResolverMock()
     {
-        return $this->getMock('Mediator\SourceResolver');
+        return $this->getMock('MediaExposer\SourceResolver');
     }
 
     private function getPathResolverMock()
     {
-        return $this->getMock('Mediator\PathResolver');
+        return $this->getMock('MediaExposer\PathResolver');
     }
 }

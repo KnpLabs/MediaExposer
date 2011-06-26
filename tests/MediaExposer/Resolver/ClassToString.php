@@ -1,6 +1,6 @@
 <?php
 
-namespace Mediator\Resolver;
+namespace MediaExposer\Resolver;
 
 class ClassToString {
     private $string;

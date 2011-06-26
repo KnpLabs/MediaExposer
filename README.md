@@ -1,7 +1,7 @@
-Mediator
-========
+Media Exposer
+=============
 
-Mediator is a PHP (5.3+) library that helps you expose your media files to the public of your web application.
+The __Media Exposer__ is a PHP (5.3+) library that helps you expose your media files to the public of your web application.
 
 By the way, if you think about a better name for the library, email me!
 

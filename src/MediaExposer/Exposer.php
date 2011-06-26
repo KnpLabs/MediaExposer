@@ -1,15 +1,15 @@
 <?php
 
-namespace Mediator;
+namespace MediaExposer;
 
-use Mediator\Iterator\SortedResolverIterator;
-use Mediator\Iterator\SourceResolverFilterIterator;
-use Mediator\Iterator\PathResolverFilterIterator;
+use MediaExposer\Iterator\SortedResolverIterator;
+use MediaExposer\Iterator\SourceResolverFilterIterator;
+use MediaExposer\Iterator\PathResolverFilterIterator;
 
 /**
  * The exposer is responsible of returning sources and paths for your medias
  *
- * @package Mediator
+ * @package MediaExposer
  * @license http://www.opensource.org/licenses/mit-license.php MIT
  * @author  Antoine Hérault <antoine.herault@gmail.com>
  */

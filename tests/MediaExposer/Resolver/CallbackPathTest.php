@@ -1,6 +1,6 @@
 <?php
 
-namespace Mediator\Resolver;
+namespace MediaExposer\Resolver;
 
 require_once __DIR__.'/ClassCallback.php';
 
@@ -102,6 +102,6 @@ class CallbackPathTest extends \PHPUnit_Framework_TestCase
 
     private function getClassCallbackMock()
     {
-        return $this->getMock('Mediator\Resolver\ClassCallback');
+        return $this->getMock('MediaExposer\Resolver\ClassCallback');
     }
 }

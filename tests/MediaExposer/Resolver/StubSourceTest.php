@@ -1,8 +1,8 @@
 <?php
 
-namespace Mediator\Resolver;
+namespace MediaExposer\Resolver;
 
-use Mediator\SourceResolver;
+use MediaExposer\SourceResolver;
 
 require_once __DIR__.'/ClassToString.php';
 

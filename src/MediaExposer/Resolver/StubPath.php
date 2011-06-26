@@ -1,13 +1,13 @@
 <?php
 
-namespace Mediator\Resolver;
+namespace MediaExposer\Resolver;
 
-use Mediator\PathResolver;
+use MediaExposer\PathResolver;
 
 /**
  * Stub path resolver
  *
- * @package Mediator
+ * @package MediaExposer
  * @license http://www.opensource.org/licenses/mit-license.php MIT
  * @author  Antoine Hérault <antoine.herault@gmail.com>
  */
