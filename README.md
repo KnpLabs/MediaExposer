@@ -29,6 +29,8 @@ Enough discussion, let's try it.
 As an exemple, will take the following simple image model:
 
 ```php
+<?php
+
 class FooImage
 {
     private $filename;
@@ -43,37 +45,39 @@ class FooImage
 Then, we create an associated resolver:
 
 ```php
-use Mediator\PathResolver;
+<?php
+
+use MediaExposer\PathResolver;
 
 class FooImageResolver implements PathResolver, SourceResolver
 {
     /**
-        * {@inheritDoc}
-        */
+     * {@inheritDoc}
+     */
     public function supports($media, array $options)
     {
         return $media instanceof FooImage;
     }
 
     /**
-        * {@inheritDoc}
-        */
+     * {@inheritDoc}
+     */
     public function getPath($media, array $options)
     {
         return '/path/to/the/images/directory/' . $media->getFilename();
     }
 
     /**
-        * {@inheritDoc}
-        */
+     * {@inheritDoc}
+     */
     public function getSource($media, array $options)
     {
         return '/media/foo/' . $media->getFilename();
     }
 
     /**
-        * {@inheritDoc}
-        */
+     * {@inheritDoc}
+     */
     public function getSourceType($media, array $options)
     {
         return SourceResolver::TYPE_RELATIVE;
@@ -84,7 +88,9 @@ class FooImageResolver implements PathResolver, SourceResolver
 Finally, you can register it in your exposer:
 
 ```php
-use Mediator\Exposer;
+<?php
+
+use MediaExposer\Exposer;
 
 $exposer = new Exposer('http://the-host');
 $exposer->addResolver(new FooImageResolver(), 10);
