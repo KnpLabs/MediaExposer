@@ -18,10 +18,25 @@ class Exposer
     private $baseUrl;
     private $resolvers;
 
+    /**
+     * Constructor
+     *
+     * @param  string $baseUrl
+     */
     public function __construct($baseUrl = null)
     {
         $this->baseUrl = $baseUrl;
         $this->resolvers = new \SplObjectStorage();
+    }
+
+    /**
+     * Defines the base url
+     *
+     * @param  string $url
+     */
+    public function setBaseUrl($url)
+    {
+        $this->baseUrl = $url;
     }
 
     /**
