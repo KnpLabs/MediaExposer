@@ -54,8 +54,9 @@ class Exposer
 
         foreach ($this->getSortedSourceResolvers() as $resolver) {
             if ($resolver->supports($media, $options)) {
-                $source = $resolver->getSource($media, $options);
+                $source = (string) $resolver->getSource($media, $options);
                 $sourceType = $resolver->getSourceType($media, $options);
+                break;
             }
         }
 
@@ -84,7 +85,7 @@ class Exposer
     {
         foreach ($this->getSortedPathResolvers() as $resolver) {
             if ($resolver->supports($media, $options)) {
-                return $resolver->getPath($media, $options);
+                return (string) $resolver->getPath($media, $options);
             }
         }
 
