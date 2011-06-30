@@ -7,7 +7,7 @@ use MediaExposer\Iterator\SourceResolverFilterIterator;
 use MediaExposer\Iterator\PathResolverFilterIterator;
 
 /**
- * The exposer is responsible of returning sources and paths for your medias
+ * The exposer is responsible of returning sources and paths for your medias.
  *
  * @package MediaExposer
  * @license http://www.opensource.org/licenses/mit-license.php MIT
@@ -21,7 +21,11 @@ class Exposer
     /**
      * Constructor
      *
-     * @param  string $baseUrl
+     * Note: The $baseUrl is used to "absolutify" relative sources when the
+     * $forceAbsolute argument of the ->getSource() method is set to TRUE and
+     * the source returned by the resolver is relative.
+     *
+     * @param  string $baseUrl An optional base url
      */
     public function __construct($baseUrl = null)
     {
@@ -41,7 +45,6 @@ class Exposer
 
     /**
      * Returns the source for the given media and options
-     *
      *
      * @param  mixed $media
      * @param  array $options
