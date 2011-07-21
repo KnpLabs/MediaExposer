@@ -220,8 +220,8 @@ class ExposerTest extends \PHPUnit_Framework_TestCase
     public function testGetResolvers()
     {
         $exposer = new Exposer();
-        $exposer->addResolver($a = $this->getSourceResolverMock(), 10);
-        $exposer->addResolver($b = $this->getPathResolverMock(), -10);
+        $exposer->addResolver($a = $this->getSourceResolverMock(), -10);
+        $exposer->addResolver($b = $this->getPathResolverMock(), 10);
         $exposer->addResolver($c = $this->getSourceResolverMock(), 0);
         $exposer->addResolver($d = $this->getPathResolverMock(), 0);
 
@@ -235,8 +235,8 @@ class ExposerTest extends \PHPUnit_Framework_TestCase
     public function testGetSortedResolvers()
     {
         $exposer = new Exposer();
-        $exposer->addResolver($a = $this->getSourceResolverMock(), 10);
-        $exposer->addResolver($b = $this->getPathResolverMock(), -10);
+        $exposer->addResolver($a = $this->getSourceResolverMock(), -10);
+        $exposer->addResolver($b = $this->getPathResolverMock(), 10);
         $exposer->addResolver($c = $this->getSourceResolverMock(), 0);
         $exposer->addResolver($d = $this->getPathResolverMock(), 0);
 
@@ -254,8 +254,8 @@ class ExposerTest extends \PHPUnit_Framework_TestCase
         $c = $this->getSourceResolverMock();
 
         $exposer = new Exposer();
-        $exposer->addResolver($a, 10);
-        $exposer->addResolver($b, -10);
+        $exposer->addResolver($a, -10);
+        $exposer->addResolver($b, 10);
         $exposer->addResolver($c, 0);
 
         $this->assertEquals(
@@ -272,8 +272,8 @@ class ExposerTest extends \PHPUnit_Framework_TestCase
         $c = $this->getSourceResolverMock();
 
         $exposer = new Exposer();
-        $exposer->addResolver($a, 10);
-        $exposer->addResolver($b, -10);
+        $exposer->addResolver($a, -10);
+        $exposer->addResolver($b, 10);
         $exposer->addResolver($c, 0);
 
         $this->assertEquals(
@@ -290,8 +290,8 @@ class ExposerTest extends \PHPUnit_Framework_TestCase
         $c = $this->getPathResolverMock();
 
         $exposer = new Exposer();
-        $exposer->addResolver($a, 10);
-        $exposer->addResolver($b, -10);
+        $exposer->addResolver($a, -10);
+        $exposer->addResolver($b, 10);
         $exposer->addResolver($c, 0);
 
         $this->assertEquals(
@@ -308,8 +308,8 @@ class ExposerTest extends \PHPUnit_Framework_TestCase
         $c = $this->getPathResolverMock();
 
         $exposer = new Exposer();
-        $exposer->addResolver($a, 10);
-        $exposer->addResolver($b, -10);
+        $exposer->addResolver($a, -10);
+        $exposer->addResolver($b, 10);
         $exposer->addResolver($c, 0);
 
         $this->assertEquals(

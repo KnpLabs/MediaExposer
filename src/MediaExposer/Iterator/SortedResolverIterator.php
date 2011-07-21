@@ -25,7 +25,7 @@ class SortedResolverIterator extends \ArrayIterator
             $groupedByPriority[$storage[$object]][] = $object;
         }
 
-        ksort($groupedByPriority);
+        krsort($groupedByPriority);
 
         $sorted = array();
         foreach ($groupedByPriority as $priorityResolvers) {
