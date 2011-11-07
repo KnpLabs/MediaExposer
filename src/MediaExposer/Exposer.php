@@ -44,6 +44,20 @@ class Exposer
     }
 
     /**
+     * Indicates whether a source can be generated for the given media and
+     * options
+     *
+     * @param  mixed $media
+     * @param  array $options
+     *
+     * @return Boolean
+     */
+    public function hasSource($media, array $options = array())
+    {
+        return null !== $this->getSourceResolver($media, $options);
+    }
+
+    /**
      * Returns the source for the given media and options
      *
      * @param  mixed $media
@@ -53,27 +67,34 @@ class Exposer
      */
     public function getSource($media, array $options = array(), $forceAbsolute = false)
     {
-        $source = null;
+        $resolver = $this->getSourceResolver($media, $options);
 
-        foreach ($this->getSortedSourceResolvers() as $resolver) {
-            if ($resolver->supports($media, $options)) {
-                $source = (string) $resolver->getSource($media, $options);
-                $sourceType = $resolver->getSourceType($media, $options);
-                break;
-            }
-        }
-
-        if (null === $source) {
+        if (null === $resolver) {
             throw new \RuntimeException(
                 'There is no source resolver for the given media and options.'
             );
         }
 
-        if ($forceAbsolute && SourceResolver::TYPE_RELATIVE === $sourceType) {
+        $source = $resolver->getSource($media, $options);
+
+        if ($forceAbsolute && SourceResolver::TYPE_RELATIVE === $resolver->getSourceType($media, $options)) {
             $source = $this->absolutify($source);
         }
 
         return $source;
+    }
+
+    /**
+     * Indicates whether a path can be generated for the given media and options
+     *
+     * @param  mixed $media
+     * @param  array $options
+     *
+     * @return Boolean
+     */
+    public function hasPath($media, array $options = array())
+    {
+        return null !== $this->getPathResolver($media, $options);
     }
 
     /**
@@ -86,15 +107,15 @@ class Exposer
      */
     public function getPath($media, array $options = array())
     {
-        foreach ($this->getSortedPathResolvers() as $resolver) {
-            if ($resolver->supports($media, $options)) {
-                return (string) $resolver->getPath($media, $options);
-            }
+        $resolver = $this->getPathResolver($media, $options);
+
+        if (null === $resolver) {
+            throw new \RuntimeException(
+                'There is no path resolver for the given media and options.'
+            );
         }
 
-        throw new \RuntimeException(
-            'There is no path resolver for the given media and options.'
-        );
+        return (string) $resolver->getPath($media, $options);
     }
 
     public function addResolver(Resolver $resolver, $priority = 0)
@@ -162,6 +183,44 @@ class Exposer
     public function getSortedPathResolvers()
     {
         return new PathResolverFilterIterator($this->getSortedResolvers());
+    }
+
+    /**
+     * Returns the first source resolver supporting the given media and options
+     *
+     * @param  mixed $media
+     * @param  array $options
+     *
+     * @return SourceResolver or NULL if no resolver were found
+     */
+    private function getSourceResolver($media, array $options)
+    {
+        foreach ($this->getSortedSourceResolvers() as $resolver) {
+            if ($resolver->supports($media, $options)) {
+                return $resolver;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns the first path resolver supporting the given media and options
+     *
+     * @param  mixed $media
+     * @param  array $options
+     *
+     * @return PathResolver or NULL if no resolver were found
+     */
+    private function getPathResolver($media, array $options)
+    {
+        foreach ($this->getSortedPathResolvers() as $resolver) {
+            if ($resolver->supports($media, $options)) {
+                return $resolver;
+            }
+        }
+
+        return null;
     }
 
     /**

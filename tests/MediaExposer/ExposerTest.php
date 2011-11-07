@@ -346,6 +346,94 @@ class ExposerTest extends \PHPUnit_Framework_TestCase
         $r->invokeArgs($exposer, array('/the/relative/source'));
     }
 
+    public function testHasSourceWhenAResolverSupportsTheGivenMediaAndOptions()
+    {
+        $resolver = $this->getSourceResolverMock();
+        $resolver
+            ->expects($this->once())
+            ->method('supports')
+            ->with(
+                $this->equalTo('THE_MEDIA'),
+                $this->equalTo(array(
+                    'foo'   => 'bar',
+                    'baz'   => 'bat'
+                ))
+            )
+            ->will($this->returnValue(true))
+        ;
+
+        $exposer = new Exposer();
+        $exposer->addResolver($resolver);
+
+        $this->assertTrue($exposer->hasSource('THE_MEDIA', array('foo' => 'bar', 'baz' => 'bat')));
+    }
+
+    public function testHasSourceWhenNoResolverSupportsTheGivenMediaAndOptions()
+    {
+        $resolver = $this->getSourceResolverMock();
+        $resolver
+            ->expects($this->once())
+            ->method('supports')
+            ->with(
+                $this->equalTo('THE_MEDIA'),
+                $this->equalTo(array(
+                    'foo'   => 'bar',
+                    'baz'   => 'bat'
+                ))
+            )
+            ->will($this->returnValue(false))
+        ;
+
+        $exposer = new Exposer();
+        $exposer->addResolver($resolver);
+
+        $this->assertFalse($exposer->hasSource('THE_MEDIA', array('foo' => 'bar', 'baz' => 'bat')));
+    }
+
+    public function testHasPathWhenAResolverSupportsTheGivenMediaAndOptions()
+    {
+        $resolver = $this->getPathResolverMock();
+        $resolver
+            ->expects($this->once())
+            ->method('supports')
+            ->with(
+                $this->equalTo('THE_MEDIA'),
+                $this->equalTo(array(
+                    'foo'   => 'bar',
+                    'baz'   => 'bat'
+                ))
+            )
+            ->will($this->returnValue(true))
+        ;
+
+        $exposer = new Exposer();
+        $exposer->addResolver($resolver);
+
+        $this->assertTrue($exposer->hasPath('THE_MEDIA', array('foo' => 'bar', 'baz' => 'bat')));
+    }
+
+    public function testHasPathWhenNoResolverSupportsTheGivenMediaAndOptions()
+    {
+        $resolver = $this->getPathResolverMock();
+        $resolver
+            ->expects($this->once())
+            ->method('supports')
+            ->with(
+                $this->equalTo('THE_MEDIA'),
+                $this->equalTo(array(
+                    'foo'   => 'bar',
+                    'baz'   => 'bat'
+                ))
+            )
+            ->will($this->returnValue(false))
+        ;
+
+        $exposer = new Exposer();
+        $exposer->addResolver($resolver);
+
+        $this->assertFalse($exposer->hasPath('THE_MEDIA', array('foo' => 'bar', 'baz' => 'bat')));
+    }
+
     private function getSourceResolverMock()
     {
         return $this->getMock('MediaExposer\SourceResolver');
