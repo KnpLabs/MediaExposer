@@ -1,0 +1,25 @@
+{
+    "name":         "knplabs/media-exposer",
+    "type":         "library",
+    "description":  "A media path/source resolution library in PHP",
+    "keywords":     ["media", "image", "file", "path", "source"],
+    "homepage":     "http://knplabs.com",
+    "license":      "MIT",
+    "authors":      [
+        {
+            "name":     "Antoine Hérault",
+            "email":    "antoine.herault@gmail.com"
+        }
+    ],
+    "require":      {
+        "php":  ">=5.3.2"
+    },
+    "suggest":      {
+        "knplabs/knp-media-exposer-bundle": "*"
+    },
+    "autoload":     {
+        "psr-0": {
+            "MediaExposer": "src/"
+        }
+    }
+}
