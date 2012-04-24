@@ -19,5 +19,5 @@ interface Resolver
      *
      * @return boolean
      */
-    public function supports($media, array $options);
+    function supports($media, array $options);
 }
